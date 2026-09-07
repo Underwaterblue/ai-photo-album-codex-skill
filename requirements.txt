@@ -1,0 +1,7 @@
+# Dependencies that are actually used by this project.
+#
+# - Pillow : image loading, processing, styling and PNG/PDF export.
+# - pypdf  : assembles album.pdf from per-page PDFs (maintained successor of
+#            the deprecated PyPDF2).
+Pillow>=10.0
+pypdf>=3.0

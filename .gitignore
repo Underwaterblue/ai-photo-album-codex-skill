@@ -1,0 +1,24 @@
+# Local / user data - never commit real photos or generated albums.
+output/
+photos/
+
+# Privacy-blur working copies created by src/cleaner.py
+temp_blurred/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Secrets / env
+.env
+.env.local
+
+# Packaging
+*.zip
+
+# OS noise
+.DS_Store
+Thumbs.db

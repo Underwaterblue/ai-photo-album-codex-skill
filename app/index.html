@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Photo Album · 本地画册生成器（参数壳）</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>AI Photo Album</h1>
+      <p class="tagline">本地画册生成 · 参数收集与命令预览壳（不读取、不上传任何照片）</p>
+    </header>
+
+    <main>
+      <form id="form" autocomplete="off">
+        <div class="row">
+          <label>照片目录
+            <input type="text" id="inputDir" value="./photos"
+                   placeholder="./photos" spellcheck="false">
+          </label>
+          <label>输出目录
+            <input type="text" id="outputDir" value="./output"
+                   placeholder="./output" spellcheck="false">
+          </label>
+        </div>
+
+        <div class="row">
+          <label>画册数量
+            <input type="number" id="albumCount" value="3" min="2" max="26">
+          </label>
+          <label>每本页数
+            <input type="number" id="pageCount" value="12" min="8" max="20">
+          </label>
+          <label>比例
+            <select id="ratio">
+              <option value="16:9">16:9</option>
+              <option value="A4">A4</option>
+            </select>
+          </label>
+          <label>DPI
+            <input type="number" id="dpi" value="300" min="72" step="1">
+          </label>
+        </div>
+
+        <div class="row">
+          <label>风格模式
+            <select id="styleMode">
+              <option value="auto">自动适配</option>
+              <option value="modern">现代网格 (city/architecture)</option>
+              <option value="ink_print">水墨版画 (landscape)</option>
+              <option value="collage">撕纸拼贴 (street/human)</option>
+              <option value="fashion">时尚杂志 (portrait/travel)</option>
+              <option value="neon">霓虹夜景 (night)</option>
+            </select>
+          </label>
+          <label>风格强度
+            <select id="styleStrength">
+              <option value="mild">mild · 轻（尽量保留原图）</option>
+              <option value="balanced" selected>balanced · 均衡</option>
+              <option value="strong">strong · 强（调整更明显）</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="buildBtn">生成运行命令</button>
+          <button type="button" id="copyBtn" class="ghost">复制命令</button>
+        </div>
+      </form>
+
+      <section id="result">
+        <h2>在终端中运行</h2>
+        <pre id="cmd" class="cmd"></pre>
+        <ol class="steps">
+          <li>把 <code>./photos</code> 指向含照片的目录（jpg / jpeg / png）。</li>
+          <li>在项目根目录执行上面的命令（本页面不执行 Python，仅生成命令）。</li>
+          <li>完成后打开 <a href="../output/index.html">output/index.html</a> 预览书脊墙与画册。</li>
+        </ol>
+        <p class="privacy">隐私：本工具全程本地处理，不上传、不用于训练；人脸/车牌/门牌打码在 v0.1.0 中为占位（见 PRIVACY.md）。</p>
+      </section>
+    </main>
+
+    <footer>ai-photo-album-codex-skill · 仅用于参数收集与本地预览展示</footer>
+  </div>
+  <script src="preview.js"></script>
+</body>
+</html>
